@@ -9,7 +9,13 @@ const Button = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
+  font-family: inherit;
+`;
+
+const Text = styled.p`
+  font-weight: 550;
+  font-style: italic;
 `;
 
 interface Headline {
@@ -38,7 +44,7 @@ function HeadlinesGrid(props: HeadlinesProps) {
             <a href={headline.url} target="_blank" rel="noopener noreferrer">
               <Button>Click to read more</Button>
             </a>
-            <p>Source: {headline.source.name}</p>
+            <Text>From: {headline.source.name}</Text>
             <hr></hr>
           </div>
         ))}

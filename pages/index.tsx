@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { LanguageProvider } from '../components/LanguageComponent';
-import LanguageSelector from '../components/LanguageSelector';
 
 const Container = styled.div`
   background-color: lightgrey;
@@ -45,7 +43,30 @@ const Button = styled.button`
   font-weight: bold;
 `;
 
+const Select = styled.div`
+  outline: 0;
+  color: black;
+  padding-right: 10px;
+  text-align: right;
+`;
+
+const Label = styled.label`
+  padding-right: 10px;
+  font-weight: bold;
+`;
+
+const Dropdown = styled.select`
+  margin-bottom: 10px;
+  font-size: 14px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid lightgrey;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-family: inherit;
+`;
+
 const HomePage = () => {
+  const [language, setLanguage] = useState<string>('en');
   const [headlines, setHeadlines] = useState([]);
   const [categoryName, setCategoryName] = useState<string>('');
 
@@ -53,7 +74,7 @@ const HomePage = () => {
     const fetchHeadlines = async () => {
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?language=en&apiKey=a7426a23db4741169e99d5cda094ff44`
+          `https://newsapi.org/v2/top-headlines?language=${language}&apiKey=a7426a23db4741169e99d5cda094ff44`
         );
         setHeadlines(response.data.articles);
       } catch (error) {
@@ -61,38 +82,47 @@ const HomePage = () => {
       }
     };
     fetchHeadlines();
-  }, []);
+  }, [language]);
 
-  const handleCategoryNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCategoryName(event.target.value);
   };
 
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(event.target.value);
+  };
+
   return (
-    <LanguageProvider>
-      <Container>
-        <Head>
-          <title>Headlines - Main Page</title>
-          <meta property="og:title" content="Headlines - Main Page" key="title"/>
-        </Head>
-        <Header/>
-        <Heading>General</Heading>
-        <LanguageSelector/>
-        <hr></hr>
-        <main>
-          <HeadlinesGrid headlines={headlines}/>
-        </main>
-        <InputField
-          type="text"
-          value={categoryName}
-          onChange={handleCategoryNameChange}
-          placeholder="Enter category name"
-        />&nbsp;&nbsp;
-        <Link href={`/category?name=${encodeURIComponent(categoryName)}`}>
-          <Button>Go to Category Page</Button>
-        </Link>
-        <Footer/>
-      </Container>
-    </LanguageProvider>
+    <Container>
+      <Head>
+        <title>Headlines - Main Page</title>
+        <meta property="og:title" content="Headlines - Main Page" key="title"/>
+      </Head>
+      <Header/>
+      <Heading>General</Heading>
+      <Select>
+        <Label htmlFor="language">Select Language:</Label>
+        <Dropdown id="language" value={language} onChange={handleLanguageChange}>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="ar">Arabic</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+        </Dropdown>
+      </Select>
+      <hr></hr>
+      <HeadlinesGrid headlines={headlines}/>
+      <InputField
+        type="text"
+        value={categoryName}
+        onChange={handleChange}
+        placeholder="Please enter category name"
+      />&nbsp;&nbsp;
+      <Link href={`/category?name=${encodeURIComponent(categoryName)}`}>
+        <Button>Go to Category Page</Button>
+      </Link>
+      <Footer/>
+    </Container>
   );
 };
 

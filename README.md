@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+This is a basic headlines app. It consists of using the News API, and displays headlines in two pages: the main page, and the category page where the user can enter a category and it filters the results. The user can also easily go back and forth from these pages, with a click of a button. https://newsapi.org/docs/endpoints/top-headlines

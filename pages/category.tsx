@@ -21,17 +21,6 @@ const Heading = styled.h2`
   font-size: 25px;
 `;
 
-const InputField = styled.input`
-  width: 200px;
-  padding: 8px;
-  box-sizing: border-box;
-  margin: 5px 0;
-  border: 0;
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: inherit;
-`;
-
 const Button = styled.button`
   border: none;
   color: white;
@@ -41,6 +30,7 @@ const Button = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
+  font-weight: bold;
 `;
 
 const CategoryPage = () => {
@@ -64,20 +54,18 @@ const CategoryPage = () => {
 
   return (
     <Container>
-      <Head>
+    <Head>
         <title>Headlines - Category Page</title>
         <meta property="og:title" content="Category - Main Page" key="title" />
-      </Head>
-      <Header/>
-      <Heading>Category: {categoryName}</Heading>
-      <hr></hr>
-      <main>
-        <HeadlinesGrid headlines={headlines}/>
-      </main>
-      <Link href="/">
+    </Head>
+    <Header/>
+    <Heading>Category: {categoryName}</Heading>
+    <hr></hr>
+    <HeadlinesGrid headlines={headlines}/>
+    <Link href="/">
         <Button>Go to Main Page</Button>
-      </Link>
-      <Footer/>
+    </Link>
+    <Footer/>
     </Container>
   );
 };
