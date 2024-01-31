@@ -60,7 +60,7 @@ const Dropdown = styled.select`
   font-size: 14px;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgrey;
-  border-radius: 0.25rem;
+  border-radius: 5px;
   cursor: pointer;
   font-family: inherit;
 `;
@@ -84,11 +84,11 @@ const HomePage = () => {
     fetchHeadlines();
   }, [language]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCategoryName(event.target.value);
   };
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(event.target.value);
   };
 
@@ -102,7 +102,7 @@ const HomePage = () => {
       <Heading>General</Heading>
       <Select>
         <Label htmlFor="language">Select Language:</Label>
-        <Dropdown id="language" value={language} onChange={handleLanguageChange}>
+        <Dropdown id="language" value={language} onChange={handleLanguage}>
           <option value="en">English</option>
           <option value="fr">French</option>
           <option value="ar">Arabic</option>
@@ -115,7 +115,7 @@ const HomePage = () => {
       <InputField
         type="text"
         value={categoryName}
-        onChange={handleChange}
+        onChange={handleCategory}
         placeholder="Please enter category name"
       />&nbsp;&nbsp;
       <Link href={`/category?name=${encodeURIComponent(categoryName)}`}>

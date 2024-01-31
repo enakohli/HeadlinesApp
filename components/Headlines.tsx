@@ -18,37 +18,20 @@ const Text = styled.p`
   font-style: italic;
 `;
 
-interface Headline {
-  title: string;
-  description: string;
-  url: string;
-  source: {
-    name: string;
-  };
-}
-
-interface HeadlinesProps {
-  headlines: Headline[];
-}
-
-function HeadlinesGrid(props: HeadlinesProps) {
-  const { headlines } = props;
-
+function HeadlinesGrid({headlines}) {
   return (
     <div>
-      <div>
         {headlines.map((headline, index) => (
-          <div key={index}>
+            <div key={index}>
             <h3>{headline.title}</h3>
             <p>{headline.description}</p>
             <a href={headline.url} target="_blank" rel="noopener noreferrer">
-              <Button>Click to read more</Button>
+                <Button>Click to read more</Button>
             </a>
             <Text>From: {headline.source.name}</Text>
             <hr></hr>
-          </div>
+            </div>
         ))}
-      </div>
     </div>
   );
 }

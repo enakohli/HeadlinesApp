@@ -54,18 +54,18 @@ const CategoryPage = () => {
 
   return (
     <Container>
-    <Head>
-        <title>Headlines - Category Page</title>
-        <meta property="og:title" content="Category - Main Page" key="title" />
-    </Head>
-    <Header/>
-    <Heading>Category: {categoryName}</Heading>
-    <hr></hr>
-    <HeadlinesGrid headlines={headlines}/>
-    <Link href="/">
-        <Button>Go to Main Page</Button>
-    </Link>
-    <Footer/>
+        <Head>
+            <title>Headlines - Category Page</title>
+            <meta property="og:title" content="Category - Main Page" key="title"/>
+        </Head>
+        <Header/>
+        <Heading>Category: {categoryName}</Heading>
+        <hr></hr>
+        <HeadlinesGrid headlines={headlines}/>
+        <Link href="/">
+            <Button>Go to Main Page</Button>
+        </Link>
+        <Footer/>
     </Container>
   );
 };
