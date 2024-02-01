@@ -44,7 +44,6 @@ const Button = styled.button`
 `;
 
 const Select = styled.div`
-  outline: 0;
   color: black;
   padding-right: 10px;
   text-align: right;
@@ -58,7 +57,7 @@ const Label = styled.label`
 const Dropdown = styled.select`
   margin-bottom: 10px;
   font-size: 14px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   border: 1px solid lightgrey;
   border-radius: 5px;
   cursor: pointer;
@@ -84,12 +83,12 @@ const HomePage = () => {
     fetchHeadlines();
   }, [language]);
 
-  const handleCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCategoryName(event.target.value);
+  const handleCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCategoryName(e.target.value);
   };
 
-  const handleLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(event.target.value);
+  const handleLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
   };
 
   return (
@@ -102,7 +101,7 @@ const HomePage = () => {
       <Heading>General</Heading>
       <Select>
         <Label htmlFor="language">Select Language:</Label>
-        <Dropdown id="language" value={language} onChange={handleLanguage}>
+        <Dropdown value={language} onChange={handleLanguage}>
           <option value="en">English</option>
           <option value="fr">French</option>
           <option value="ar">Arabic</option>

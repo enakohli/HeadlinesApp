@@ -27,7 +27,6 @@ const Button = styled.button`
   background-color: black;
   padding: 10px 15px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 12px;
   font-weight: bold;
@@ -39,7 +38,7 @@ const CategoryPage = () => {
   const [headlines, setHeadlines] = useState([]);
 
   useEffect(() => {
-    const fetchCategoryHeadlines = async () => {
+    const fetchCategory = async () => {
       try {
         const response = await axios.get(
           `https://newsapi.org/v2/top-headlines?language=en&category=${categoryName}&apiKey=a7426a23db4741169e99d5cda094ff44`
@@ -49,7 +48,7 @@ const CategoryPage = () => {
         console.error('Error fetching headlines:', error);
       }
     };
-    fetchCategoryHeadlines();
+    fetchCategory();
   }, []);
 
   return (
