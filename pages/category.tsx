@@ -59,7 +59,6 @@ const CategoryPage = () => {
         </Head>
         <Header/>
         <Heading>Category: {categoryName}</Heading>
-        <hr></hr>
         <HeadlinesGrid headlines={headlines}/>
         <Link href="/">
             <Button>Go to Main Page</Button>

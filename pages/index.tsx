@@ -109,7 +109,6 @@ const HomePage = () => {
           <option value="it">Italian</option>
         </Dropdown>
       </Select>
-      <hr></hr>
       <HeadlinesGrid headlines={headlines}/>
       <InputField
         type="text"

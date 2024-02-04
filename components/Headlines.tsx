@@ -20,6 +20,7 @@ const Text = styled.p`
 function HeadlinesGrid({headlines}) {
   return (
     <div>
+        <hr></hr>
         {headlines.map((headline, index) => (
             <div key={index}>
             <h3>{headline.title}</h3>
